@@ -46,6 +46,8 @@ async function getMostRecentPost() {
     return false;
 }
 
+const dbURL = 'https://programming-blog-backend.herokuapp.com/posts';
+
 async function updateDatabase() {
   const mostRecentPost = await getMostRecentPost();
 
@@ -54,7 +56,7 @@ async function updateDatabase() {
   if(mostRecentPost !== false){
     //api post request to post the most recent post
     request
-    .post('http://localhost:5000/posts')
+    .post(dbURL)
     .send(JSON.stringify(mostRecentPost))
     .set('Content-Type', 'application/json')
     .then(res => {
@@ -64,8 +66,7 @@ async function updateDatabase() {
 }
 
 async function getAllPosts() {
-  const databaseURL = 'http://localhost:5000/posts';
-  const response = await fetch(databaseURL);
+  const response = await fetch(dbURL);
   const postsData = await response.json();
 
   return postsData;

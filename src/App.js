@@ -83,17 +83,16 @@ class App extends React.Component {
 
   componentDidMount() {
     // makes api call to instagram to post the most recent post to api
-    updateDatabase()
+    updateDatabase();
+    
+    // gets all posts from api
+    getAllPosts()
     .then(res => {
-      // gets all posts from api
-      getAllPosts()
-      .then(res => {
-        // sets state of posts to all the posts from the api
-        this.setState({
-          posts: res
-        });
-      })
-    });
+      // sets state of posts to all the posts from the api
+      this.setState({
+        posts: res
+      });
+    })
   }
 
   render() {

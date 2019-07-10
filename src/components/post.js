@@ -1,6 +1,10 @@
 import React from 'react';
 
 function Post(props) {
+    let image = null;
+    if(props.post.image !== '#'){
+        image = <img className="mb-4 text-center" src={props.post.image} alt="todays post" width='100%' />
+    }
     return (
         <div className="row">
             <div className="col-12">
@@ -11,7 +15,7 @@ function Post(props) {
                     </div>
 
                     <div className="card-body">
-                        <img className="mb-4 text-center" src={props.post.image} alt="todays post" width='100%' />
+                        {image}
                         <p>{props.post.caption}</p>
                     </div>
 
